@@ -1,0 +1,27 @@
+version: '2'
+name: 'database'
+services:
+  dev.db.mongo:
+    build: .
+    image: db.mongo/redis
+    container_name: 'dev.db.mongo'
+    volumes:
+      - D:/Data/MongoDB-Container/db:/data/db
+    ports:
+      - '47017:27017'
+    restart: always
+    # command: mongod -f /etc/mongodb.conf
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: administrator
+      MONGO_INITDB_ROOT_PASSWORD: ahd4gus&@wo
+  dev.db.redis:
+    depends_on:
+      - dev.db.mongo
+    image: db.mongo/redis
+    # image: redis
+    container_name: 'dev.db.redis'
+    ports:
+      - '12379:6379'
+    restart: always
+    # command: service redis-server start
+    # command: redis-server /etc/redis/redis.conf

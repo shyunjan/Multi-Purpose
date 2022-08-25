@@ -1,0 +1,83 @@
+Postman 동작 불능 시 점검할 부분 >>
+POSTMAN_DISABLE_GPU
+
+C:\Users\Shin HyunJae\AppData\Local\Postman
+
+Postman 테스트용 데이터 >>
+
+{
+    "email": "snhj3827@naver.com",
+    "password": "12345!@#$%",
+    "birthNo": 19720124,
+    "sex": "Male",
+    "memo": "Just memo"
+}
+{
+    "productName": "Galaxy Omega",
+    "option": "Ultra",
+    "spec": {
+        "spec": "...",
+        "physical": {
+            "length": 6,
+            "width": 3,
+            "thickness": 1.1,
+            "sizeUnit": "inch"
+        },
+        "parts": {
+            "memorySize": 512,
+            "memoryUnit": "M",
+            "cpu": "Exynos",
+            "cpuSpeed": 16,
+            "cpuSpeedUnit": "Ghz"
+        }
+     },
+    "price": 1250000,
+    "currency": "KRW",
+    "color": "Green",
+    "processor": "SnapDragon"
+}
+
+
+http://localhost:3000/graphql
+
+mutation {
+  createOrder(createOrderInput: {  
+    orderDate: "2022-06-25T02:28:00.000+09:00",
+    paymentRoute: "Toss",
+    products: [25, 26],
+    userDescription: "테스트 중..."
+  }) { 
+    _id,
+    orderDate,
+    paymentRoute,
+    products {
+      productName,
+      option,
+      spec {
+        spec,
+        physical {
+          length,
+          width,
+          depth,
+          thickness,
+          sizeUnit,
+          weight,
+          weightUnit,
+          volume,
+          volumeUnit
+        },
+        parts {
+          memorySize,
+          memorySizeUnit,
+          cpu,
+          cpuSpeed,
+          cpuSpeedUnit
+        }
+      },
+      price,
+      currency,
+      color
+    },
+    userDescription
+  }
+}

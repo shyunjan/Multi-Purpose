@@ -1,5 +1,4 @@
-version: '2'
-name: 'database'
+version: '3.9'
 services:
   dev.db.mongo:
     build: .

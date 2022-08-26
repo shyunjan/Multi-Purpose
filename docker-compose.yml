@@ -1,18 +1,21 @@
 version: '3.9'
+# version: '3.9'부터는 아래 name 속성을 사용하면 오류가 발생한다. 없어도 이상 없는 것 같으므로 주석처리한다.
+# name: 'database'
 services:
   dev.db.mongo:
     build: .
     image: db.mongo/redis
     container_name: 'dev.db.mongo'
     volumes:
-      - /Data/MongoDB-Container/db:/data/db
+      - /Data/MongoDB-Container/db/data/db
+      # 오른쪽의 /db/data/db 부분은 container 내부 경로이다.
     ports:
       - '47017:27017'
     restart: always
     # command: mongod -f /etc/mongodb.conf
     environment:
       MONGO_INITDB_ROOT_USERNAME: administrator
-      MONGO_INITDB_ROOT_PASSWORD: ahd4gus&@wo
+      MONGO_INITDB_ROOT_PASSWORD: ^Ahdgo2237!
   dev.db.redis:
     depends_on:
       - dev.db.mongo

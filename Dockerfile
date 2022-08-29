@@ -1,6 +1,8 @@
 FROM mongo:5.0.9 AS mongodb-image
 LABEL maintainer="shyunjan@naver.com" version=2
-WORKDIR D:/Projects/Multi-Purpose
+# WORKDIR는 Docker image 내의 디렉토리이다.
+WORKDIR /root
+# USER root
 # RUN cp /etc/mongod.conf.orig /etc/mongod.conf && chown mongodb:mongodb /etc/mongod.conf && chmod 600 /etc/mongod.conf
 RUN cp /etc/mongod.conf.orig /etc/mongodb.conf && \
     chown mongodb:mongodb /etc/mongodb.conf && \

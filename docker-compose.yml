@@ -1,29 +1,35 @@
-version: '3.9'
+# MacOS용 docker-compose.yml
+# Written by: Shin Hyunjae
+#
+version: "3.9"
 # version: '3.9'부터는 아래 name 속성을 사용하면 오류가 발생한다. 없어도 이상 없는 것 같으므로 주석처리한다.
 # name: 'database'
 services:
   dev.db.mongo:
     build: .
     image: db.mongo/redis
-    container_name: 'dev.db.mongo'
+    container_name: "dev.db.mongo"
+    # user: "root"
     volumes:
-      - /Data/MongoDB-Container/db/data/db
-      # 오른쪽의 /db/data/db 부분은 container 내부 경로이다.
+      - /Users/shj/Data/Docker/MongoDB/data/db:/data/db
+      #- /Users/shj/Data/Docker/MongoDB/data/db:/data/db --user 1000
+      # 오른쪽의 /data/db 부분은 container 내부 경로이다.
+      # 왼쪽의 /Users 디렉토리는 docker 관리자의 Preferences... > Resources > File sharing에 등록해줘야 한다.
     ports:
-      - '47017:27017'
+      - "47017:27017"
     restart: always
     # command: mongod -f /etc/mongodb.conf
     environment:
       MONGO_INITDB_ROOT_USERNAME: administrator
-      MONGO_INITDB_ROOT_PASSWORD: ^Ahdrh@2237!
+      MONGO_INITDB_ROOT_PASSWORD: ^Ahd@2237!
   dev.db.redis:
     depends_on:
       - dev.db.mongo
     image: db.mongo/redis
-    # image: redis
-    container_name: 'dev.db.redis'
+    container_name: "dev.db.redis"
+    # user: "redis"
     ports:
-      - '12379:6379'
+      - "12379:6379"
     restart: always
     # command: service redis-server start
     # command: redis-server /etc/redis/redis.conf

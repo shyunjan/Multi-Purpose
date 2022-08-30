@@ -52,7 +52,9 @@ import NoticeModule from './notice/notice.module';
       // connectionName: 'multi-purpose.master', // 커넥션을 여러 개 만들면 이름으로 구분이 필요하다.
       imports: [
         // MongooseConfigModule,
-        ConfigModule.forFeature(require(`src/config/${APP_PHASE}/config.db`).default),
+        ConfigModule.forFeature(
+          require(`src/config/${APP_PHASE}/config.db`).default
+        ),
       ],
       // useFactory: async (configService: MongooseConfigService): Promise<MongooseModuleOptions> => {
       //   return configService.createMongooseOptions();
@@ -93,6 +95,11 @@ import NoticeModule from './notice/notice.module';
         // typePaths: ['./**/*.graphql'],
         // autoSchemaFile: true,
         autoSchemaFile: 'src/schema.gql',
+        // cors: {
+        //   origin: 'http://localhost:3000',
+        //   credentials: true,
+        // },
+        cors: true,
       }),
     }),
     CommonModule,

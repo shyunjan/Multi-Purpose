@@ -19,8 +19,7 @@
   "author": "Shin HyunJae",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "@fastify/middie": "^8.0.0",
-    "@nestjs/apollo": "^10.0.16",
+    "@nestjs/apollo": "^10.0.22",
     "@nestjs/common": "^8.4.7",
     "@nestjs/config": "^2.1.0",
     "@nestjs/core": "^8.4.7",
@@ -29,7 +28,7 @@
     "@nestjs/microservices": "^8.4.7",
     "@nestjs/mongoose": "^9.1.1",
     "@nestjs/platform-fastify": "^8.4.5",
-    "apollo-server-fastify": "^3.9.0",
+    "apollo-server-fastify": "^3.10.2",
     "cache-manager": "^4.1.0",
     "cache-manager-ioredis": "^2.1.0",
     "class-transformer": "^0.5.1",

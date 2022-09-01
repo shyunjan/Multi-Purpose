@@ -1,4 +1,11 @@
-import { ValidationPipeOptions, Controller, Inject, Post, Body, ParseArrayPipe } from '@nestjs/common';
+import {
+  ValidationPipeOptions,
+  Controller,
+  Inject,
+  Post,
+  Body,
+  ParseArrayPipe,
+} from '@nestjs/common';
 import { MemberDto } from './app/auth/dto';
 import { AuthService } from './app/auth/auth.service';
 import { SessionType } from './types';
@@ -27,6 +34,7 @@ export const defaultValidationOptions: ValidationPipeOptions = {
   // skipMissingProperties: true,
 };
 
+/* 아래 컨트롤러는 Super User 계정을 등록하기 위함s */
 @Controller('initSys')
 export class InitiateSystemController {
   constructor(private readonly authService: AuthService) {}
@@ -34,7 +42,8 @@ export class InitiateSystemController {
   /* User(tester, operator, administrator except customer)를 memory-db에 저장 */
   @Post('setUser')
   async setUser(
-    @Body(new ParseArrayPipe({ items: MemberDto, ...defaultValidationOptions })) members: MemberDto[]
+    @Body(new ParseArrayPipe({ items: MemberDto, ...defaultValidationOptions }))
+    members: MemberDto[]
   ): Promise<SessionType[]> {
     return this.authService.saveArrayCache(members);
   }

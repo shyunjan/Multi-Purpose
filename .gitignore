@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# TypeScript cache
+*.tsbuildinfo
+
 # production
 build/
 dist/

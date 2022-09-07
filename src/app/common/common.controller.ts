@@ -1,5 +1,5 @@
 // import { HttpAdapterHost } from '@nestjs/core';
-import { Controller, Get, Post, Inject, Res, Redirect } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { CommonService } from './common.service';
 import { FastifyReply } from 'fastify';
 

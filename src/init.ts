@@ -1,11 +1,4 @@
-import {
-  ValidationPipeOptions,
-  Controller,
-  Inject,
-  Post,
-  Body,
-  ParseArrayPipe,
-} from '@nestjs/common';
+import { ValidationPipeOptions, Controller, Post, Body, ParseArrayPipe } from '@nestjs/common';
 import { MemberDto } from './app/auth/dto';
 import { AuthService } from './app/auth/auth.service';
 import { SessionType } from './types';
